@@ -1,28 +1,14 @@
 import "./App.css";
 import { useEffect } from "react";
-import { fireStore } from "./util/firebase";
-
+import LoginPage from "./pages/loginPage";
+import GlobalStyle from "./GlobalStyle";
+import { Route, Routes } from "react-router-dom";
 function App() {
-  function handleFun(res) {
-    console.log("JWT " + res.credential);
-  }
-  useEffect(() => {
-    console.log(fireStore.app.name);
-    /* global google */
-    google.accounts.id.initialize({
-      client_id: process.env.GOOGLE_LOGIN,
-      callback: handleFun,
-    });
-
-    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
-      theme: "outline",
-      size: "large",
-    });
-  }, []);
-
   return (
-    <div className="App">
-      <div id="signInDiv"></div>
+    <div className="app">
+      <GlobalStyle />
+      <Routes></Routes>
+      <LoginPage></LoginPage>
     </div>
   );
 }
